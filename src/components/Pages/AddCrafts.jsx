@@ -1,13 +1,13 @@
 import Footer from "./Shared/Footer";
 import Navbar from "./Shared/Navbar";
 
-const Home = () => {
+const AddCrafts = () => {
     return (
         <div>
             <Navbar></Navbar>
 
-            <div className="container mx-auto">
-                <h2>This is home</h2>
+            <div className="mx-auto container">
+                <h2>This is Add Craft Items</h2>
             </div>
 
             <Footer></Footer>
@@ -15,4 +15,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default AddCrafts;
