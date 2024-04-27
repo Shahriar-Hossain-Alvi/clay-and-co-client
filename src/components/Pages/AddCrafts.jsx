@@ -1,5 +1,6 @@
 import Footer from "./Shared/Footer";
 import Navbar from "./Shared/Navbar";
+import Swal from 'sweetalert2'
 
 const AddCrafts = () => {
 
@@ -18,8 +19,33 @@ const AddCrafts = () => {
         const email = form.email.value;
         const name = form.name.value;
 
-        const addedCraft = { itemName, photoURL, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, name }
-        console.log(addedCraft);
+        const newCraftItem = { itemName, photoURL, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, name }
+        console.log(newCraftItem);
+
+        //send data to the server
+        fetch('http://localhost:5000/craftItem', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newCraftItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                // sweet alert
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Your item is added to the database successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                }
+                form.reset();
+            })
+
     }
 
     return (
@@ -36,7 +62,7 @@ const AddCrafts = () => {
 
                 {/* Add Crafts Form */}
                 <div>
-                    <form className="space-y-3" onSubmit={handleAddCrafts}>
+                    <form className="space-y-3 shadow-2xl p-6 border rounded-2xl" onSubmit={handleAddCrafts}>
                         {/* name and photo url */}
                         <div className="grid grid-cols-2 gap-8">
                             <label className="input input-bordered flex items-center gap-2">
@@ -91,7 +117,7 @@ const AddCrafts = () => {
                             </select>
 
                             <label className="input input-bordered flex items-center gap-2">
-                                Processing Time (minutes):
+                                Processing Time (Max Days):
                                 <input name="processingTime" type="text" className="grow" placeholder="Item process time" />
                             </label>
                         </div>
@@ -119,11 +145,8 @@ const AddCrafts = () => {
                                 <input name="name" type="text" className="grow" placeholder="Enter your Name" />
                             </label>
 
-                            <input className="btn bg-primaryColor text-white w-full" type="submit" value="Add Your Item" />
+                            <input className="btn bg-primaryColor text-white w-full" type="submit" value="Add" />
                         </div>
-
-
-
                     </form>
                 </div>
 
