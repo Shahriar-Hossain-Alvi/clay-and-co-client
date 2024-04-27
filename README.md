@@ -1,5 +1,7 @@
 # Clay & Co.
 
+- Live link:
+
 ## Features
 - **Navigation:** Navigate Easily from page to page with the help of react router
 
@@ -10,6 +12,3 @@
 - **Responsiveness:** Responsive design for mobile, tablet and pc
 
 - **Footer:** Eye catching footer with quick links and social account links
-
-- Live link:
-

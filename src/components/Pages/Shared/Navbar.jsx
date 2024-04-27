@@ -1,14 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
-        {
-            <li><NavLink to="/updateprofile">Update Profile</NavLink></li>
-        }
-        <li><NavLink to="/userprofile">User Profile</NavLink></li>
-        <li><NavLink to="/favorites">Favorites</NavLink></li>
-        <li><NavLink to="/aboutUs">About us</NavLink></li>
+        <li><NavLink to="/allArtsCrafts">All Art & Craft</NavLink></li>
+        <li><NavLink to="/myArtsCrafts"> My Art & Craft</NavLink></li>
+        
     </>
 
     return (
@@ -30,7 +27,18 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                {/*             */}
+                <div className="navbar-end">
+                    <Link to="/login">
+                        <button className="btn">
+                        Login
+                        </button>
+                    </Link>
+                    <Link to="/register">
+                        <button className="btn">
+                        Register
+                        </button>
+                    </Link>
+                </div>
             </div>
         </div>
     );
