@@ -1,3 +1,15 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+/* custom css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* custom css */
+#menuBar a.active{
+background-color: #77C720;
+color: white;
+}

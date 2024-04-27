@@ -5,7 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        raleway: ['Rubik', 'sans-serif'],
+        dosis: ['Dosis', 'serif'],
+      },
+      colors: {
+        primaryColor: '#c3002f',
+        secondaryColor: '#222d35'
+      },
+    },
   },
   plugins: [require("daisyui")],
 
