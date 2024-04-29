@@ -1,8 +1,12 @@
+import { AuthContext } from "../Providers/AuthProvider";
 import Footer from "./Shared/Footer";
 import Navbar from "./Shared/Navbar";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { useContext } from "react";
 
 const AddCrafts = () => {
+
+    const { user } = useContext(AuthContext);
 
     const handleAddCrafts = e => {
         e.preventDefault();
@@ -133,7 +137,7 @@ const AddCrafts = () => {
 
                             <label className="input input-bordered flex items-center gap-2">
                                 Your Email:
-                                <input name="email" type="text" className="grow" placeholder="Enter your email" />
+                                <input name="email" type="text" className="grow" placeholder="Enter your email" defaultValue={user?.email == null ? "Enter your email correctly" : user.email} />
                             </label>
                         </div>
 
@@ -142,10 +146,10 @@ const AddCrafts = () => {
                         <div className="grid grid-cols-2 gap-8">
                             <label className="input input-bordered flex items-center gap-2">
                                 Your Name:
-                                <input name="name" type="text" className="grow" placeholder="Enter your Name" />
+                                <input name="name" type="text" className="grow" placeholder="Enter your Name" defaultValue={user ? user?.displayName : "Enter your name"} />
                             </label>
 
-                            <input className="btn bg-primaryColor text-white w-full" type="submit" value="Add" />
+                            <input className="btn bg-primaryColor hover:bg-lime-700 text-white w-full" type="submit" value="Add" />
                         </div>
                     </form>
                 </div>
