@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import { useContext, useState } from "react";
@@ -13,7 +13,7 @@ const Register = () => {
 
     const { createUser } = useContext(AuthContext);
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -25,8 +25,6 @@ const Register = () => {
         const email = form.email.value;
         const photoUrl = form.photoUrl.value;
         const password = form.password.value;
-
-        console.log(name, email, photoUrl, password);
 
         //password validation
         if (password.length < 6) {
@@ -51,9 +49,9 @@ const Register = () => {
                 updateProfile(result.user, {
                     displayName: name, photoURL: photoUrl
                 }).then(result => {
-                    // setTimeout(() => {
-                    //     navigate("/");
-                    // }, 1500)
+                    setTimeout(() => {
+                        navigate("/");
+                    }, 1500)
                     console.log(result.user);
                 }).catch((error) => {
                     toast.error(error);

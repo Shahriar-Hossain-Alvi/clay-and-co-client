@@ -1,12 +1,23 @@
 import { Link, NavLink } from "react-router-dom";
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip';
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut();
+    }
+
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/allArtsCrafts">All Art & Craft</NavLink></li>
         <li><NavLink to="/addCraft">Add Craft item</NavLink></li>
         <li><NavLink to="/myArtsCrafts"> My Art & Craft</NavLink></li>
-        
+
     </>
 
     return (
@@ -29,16 +40,34 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login">
-                        <button className="btn">
-                        Login
-                        </button>
-                    </Link>
-                    <Link to="/register">
-                        <button className="btn">
-                        Register
-                        </button>
-                    </Link>
+                    {
+                        user ?
+                            <div >
+                                <a id="clickable">
+                                    <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
+                                </a>
+                                <Tooltip className="space-y-2" anchorSelect="#clickable" clickable>
+                                    <h4 className="text-center text-lg font-medium">Name: <span className="font-bold text-primaryColor">
+                                        {user.displayName}
+                                    </span></h4>
+                                    <button onClick={handleLogOut} className="btn btn-error text-white font-semibold font-rubic">Log Out</button>
+                                </Tooltip>
+                            </div>
+                            :
+                            <div>
+                                <Link to="/login">
+                                    <button className="btn">
+                                        Login
+                                    </button>
+                                </Link>
+                                <Link to="/register">
+                                    <button className="btn">
+                                        Register
+                                    </button>
+                                </Link>
+                            </div>
+                    }
+
                 </div>
             </div>
         </div>
