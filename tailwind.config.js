@@ -12,11 +12,13 @@ export default {
       },
       colors: {
         primaryColor: '#c3002f',
-        secondaryColor: '#222d35'
       },
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "dark"],
+  },
 
 }
 

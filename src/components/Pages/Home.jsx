@@ -7,6 +7,7 @@ import { Typewriter } from 'react-simple-typewriter'
 import { AuthContext } from "../Providers/AuthProvider";
 
 
+
 const Home = () => {
     const allCraftItems = useLoaderData();
 
@@ -27,7 +28,7 @@ const Home = () => {
 
                 <div className="my-20 App">
 
-                    <h3 className="font-bold text-2xl text-center font-rubic text-secondaryColor mb-8 block">
+                    <h3 className="font-bold text-2xl text-center font-rubic mb-8 block">
                         <Typewriter
                             delaySpeed={2000}
                             deleteSpeed={100}

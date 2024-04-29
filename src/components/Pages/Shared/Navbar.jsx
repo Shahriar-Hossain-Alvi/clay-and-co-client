@@ -1,12 +1,32 @@
 import { Link, NavLink } from "react-router-dom";
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { LuSun } from "react-icons/lu";
+import { MdOutlineDarkMode } from "react-icons/md";
 
 const Navbar = () => {
 
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+
+    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : "light");
+
+    useEffect(()=>{
+        localStorage.setItem("theme", theme);
+        const localTheme = localStorage.getItem("theme");
+        document.querySelector("html").setAttribute('data-theme', localTheme)
+    }, [theme]);
+
+    const handleToogleTheme = e=>{
+        if(e.target.checked){
+            setTheme('dark');
+        }
+        else{
+            setTheme('light');
+        }
+    }
+     
 
     const handleLogOut = () => {
         logOut();
@@ -17,7 +37,6 @@ const Navbar = () => {
         <li><NavLink to="/allArtsCrafts">All Art & Craft</NavLink></li>
         <li><NavLink to="/addCraft">Add Craft item</NavLink></li>
         <li><NavLink to="/myArtsCrafts"> My Art & Craft</NavLink></li>
-
     </>
 
     return (
@@ -28,7 +47,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52 bg-secondaryColor text-white">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52 text-white">
                             {navLinks}
                         </ul>
                     </div>
@@ -40,6 +59,20 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    <label className="swap swap-rotate mr-3">
+
+                        {/* this hidden checkbox controls the state */}
+                        <input 
+                        onChange={handleToogleTheme}
+                        checked={theme ==='light'? false : true} 
+                        type="checkbox" />
+
+                        {/* sun icon */}
+                        <LuSun className="swap-on fill-current w-10 h-10" />
+
+                        {/* moon icon */}
+                        <MdOutlineDarkMode className="swap-off fill-current w-10 h-10" />
+                    </label>
                     {
                         user ?
                             <div >
@@ -56,12 +89,12 @@ const Navbar = () => {
                             :
                             <div className="flex gap-2">
                                 <Link to="/login">
-                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-secondaryColor hover:border-primaryColor">
+                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-black hover:border-primaryColor">
                                         Login
                                     </button>
                                 </Link>
                                 <Link to="/register">
-                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-secondaryColor hover:border-primaryColor">
+                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-black hover:border-primaryColor">
                                         Register
                                     </button>
                                 </Link>
