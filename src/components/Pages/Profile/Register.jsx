@@ -1,13 +1,155 @@
+import { Link } from "react-router-dom";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+// import { toast } from "react-toastify";
+import { updateProfile } from "firebase/auth";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+    // const navigate = useNavigate();
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleRegister = e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photoUrl = form.photoUrl.value;
+        const password = form.password.value;
+
+        console.log(name, email, photoUrl, password);
+
+        //password validation
+        if (password.length < 6) {
+            toast.error('Password should be at least 6 character');
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast.error('Password should contain at least 1 uppercase character');
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast.error('Password should contain at least 1 lowercase character');
+            return;
+        }
+
+
+        //create new user
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                toast('Profile Created successfully!');
+                updateProfile(result.user, {
+                    displayName: name, photoURL: photoUrl
+                }).then(result => {
+                    // setTimeout(() => {
+                    //     navigate("/");
+                    // }, 1500)
+                    console.log(result.user);
+                }).catch((error) => {
+                    toast.error(error);
+                });
+            })
+            .catch(error => {
+                // toast.error(error.message)
+                console.error(error);
+            });
+        e.currentTarget.reset();
+    }
+
     return (
         <div>
             <Navbar></Navbar>
 
+            <ToastContainer></ToastContainer>
+
             <div className="mx-auto container">
-                <h2>Register</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-2 container mx-auto">
+                    <div className="lg:flex md:flex md:items-center md:justify-start lg:items-center lg:justify-start lg:order-2">
+                        {/* heading */}
+                        <div className="animate__animated animate__backInRight lg:text-left mt-10 lg:mt-0 px-4 lg:px-0">
+                            <h1 className="text-5xl font-bold font-rubic text-secondaryColor text-center lg:text-left">Register now!</h1>
+                            <p className="py-6 text-center lg:text-left text-secondaryColor font-medium text-lg">Create an account to save and manage your properties freely</p>
+
+                            <hr />
+                            <div className="my-3 flex flex-col items-center lg:items-start">
+                                <p className="text-xl font-medium pb-2 text-secondaryColor">Password must contain -</p>
+                                <div>
+                                    <ul className="list-disc list-inside list space-y-1 text-lg font-semibold text-stone-600">
+                                        <li>At least 6 character</li>
+                                        <li>1 uppercase character</li>
+                                        <li>1 lowercase character</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <p className="font-medium text-lg mt-8">Already have an account? <Link className="underline text-red-500 font-bold" to="/login">Login</Link> now</p>
+                        </div>
+                    </div>
+
+                    <div className="hero mt-4 animate__animated animate__backInLeft">
+                        <div className="hero-content w-full">
+                            <div className="card shrink-0 max-w-lg w-full shadow-2xl ">
+                                <form onSubmit={handleRegister} className="card-body">
+
+                                    {/* input name */}
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text text-base font-medium text-secondaryColor">Name</span>
+                                        </label>
+                                        <input name="name" type="text" placeholder="Your name" className="input input-bordered" required />
+                                    </div>
+
+                                    {/* input photo url */}
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text text-base font-medium text-secondaryColor">PhotoUrl</span>
+                                        </label>
+                                        <input name="photoUrl" type="text" placeholder="Photo Url" className="input input-bordered" />
+                                    </div>
+
+                                    {/* input email */}
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text text-base font-medium text-secondaryColor">Email<span className="text-red-600">*</span></span>
+                                        </label>
+                                        <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                                    </div>
+
+                                    {/* input password */}
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text text-base font-medium text-secondaryColor">Password<span className="text-red-600">*</span></span>
+                                        </label>
+                                        <div className="flex items-center">
+                                            <input name="password" type={showPassword ? "text" : "password"} placeholder="password" className="input input-bordered w-full" required />
+                                            <span className="cursor-pointer -ml-6 text-lg hover:text-primaryColor" onClick={() => setShowPassword(!showPassword)}>
+                                                {
+                                                    showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                                                }
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* register button */}
+                                    <div className="form-control mt-6">
+                                        <button className="btn bg-primaryColor border-primaryColor text-xl text-white hover:bg-lime-600">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <Footer></Footer>
