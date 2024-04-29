@@ -6,7 +6,7 @@ const CraftItemCard = ({ singleCraftItem }) => {
     return (
         <div className='grid grid-cols-3 border border-primaryColor p-5 rounded-2xl gap-4'>
             {/* Item image */}
-            <div className='rounded-2xl'>
+            <div className='rounded-2xl shadow-2xl'>
                 <img className='w-52 h-52 rounded-2xl' src={photoURL} alt={`photo of ${itemName}`} />
             </div>
 
