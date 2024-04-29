@@ -50,18 +50,18 @@ const Navbar = () => {
                                     <h4 className="text-center text-lg font-medium">Name: <span className="font-bold text-primaryColor">
                                         {user.displayName}
                                     </span></h4>
-                                    <button onClick={handleLogOut} className="btn btn-error text-white font-semibold font-rubic">Log Out</button>
+                                    <button onClick={handleLogOut} className="btn btn-block btn-error text-white font-semibold font-rubic">Log Out</button>
                                 </Tooltip>
                             </div>
                             :
-                            <div>
+                            <div className="flex gap-2">
                                 <Link to="/login">
-                                    <button className="btn">
+                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-secondaryColor hover:border-primaryColor">
                                         Login
                                     </button>
                                 </Link>
                                 <Link to="/register">
-                                    <button className="btn">
+                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-secondaryColor hover:border-primaryColor">
                                         Register
                                     </button>
                                 </Link>
