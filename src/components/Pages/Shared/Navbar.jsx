@@ -12,21 +12,21 @@ const Navbar = () => {
 
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : "light");
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem("theme", theme);
         const localTheme = localStorage.getItem("theme");
         document.querySelector("html").setAttribute('data-theme', localTheme)
     }, [theme]);
 
-    const handleToogleTheme = e=>{
-        if(e.target.checked){
+    const handleToogleTheme = e => {
+        if (e.target.checked) {
             setTheme('dark');
         }
-        else{
+        else {
             setTheme('light');
         }
     }
-     
+
 
     const handleLogOut = () => {
         logOut();
@@ -59,28 +59,28 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <label className="swap swap-rotate mr-3">
+                    <label className="swap swap-rotate mr-1 md:mr-3 lg:mr-3">
 
                         {/* this hidden checkbox controls the state */}
-                        <input 
-                        onChange={handleToogleTheme}
-                        checked={theme ==='light'? false : true} 
-                        type="checkbox" />
+                        <input
+                            onChange={handleToogleTheme}
+                            checked={theme === 'light' ? false : true}
+                            type="checkbox" />
 
                         {/* sun icon */}
-                        <LuSun className="swap-on fill-current w-10 h-10" />
+                        <LuSun className="swap-on fill-current w-6 h-6 md:w-10 md:h-10 lg:w-10 lg:h-10" />
 
                         {/* moon icon */}
-                        <MdOutlineDarkMode className="swap-off fill-current w-10 h-10" />
+                        <MdOutlineDarkMode className="swap-off fill-current w-6 h-6 md:w-10 md:h-10 lg:w-10 lg:h-10" />
                     </label>
                     {
                         user ?
-                            <div >
+                            <div>
                                 <a id="clickable">
                                     <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
                                 </a>
                                 <Tooltip
-                                place="left-start" className="space-y-2" anchorSelect="#clickable" clickable>
+                                    place="left-start" className="space-y-2" anchorSelect="#clickable" clickable>
                                     <h4 className="text-center text-lg font-medium">Name: <span className="font-bold text-primaryColor">
                                         {user.displayName}
                                     </span></h4>
@@ -88,14 +88,14 @@ const Navbar = () => {
                                 </Tooltip>
                             </div>
                             :
-                            <div className="flex gap-2">
+                            <div className="flex gap-1 md:gap-2 lg:gap-2">
                                 <Link to="/login">
-                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-black hover:border-primaryColor">
+                                    <button className="btn btn-sm md:btn-md lg:btn-md bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-black hover:border-primaryColor">
                                         Login
                                     </button>
                                 </Link>
                                 <Link to="/register">
-                                    <button className="btn bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-black hover:border-primaryColor">
+                                    <button className="btn btn-sm md:btn-md lg:btn-md  bg-primaryColor text-white font-semibold font-rubic hover:bg-white hover:text-black hover:border-primaryColor">
                                         Register
                                     </button>
                                 </Link>
