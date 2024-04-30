@@ -79,7 +79,8 @@ const Navbar = () => {
                                 <a id="clickable">
                                     <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />
                                 </a>
-                                <Tooltip className="space-y-2" anchorSelect="#clickable" clickable>
+                                <Tooltip
+                                place="left-start" className="space-y-2" anchorSelect="#clickable" clickable>
                                     <h4 className="text-center text-lg font-medium">Name: <span className="font-bold text-primaryColor">
                                         {user.displayName}
                                     </span></h4>

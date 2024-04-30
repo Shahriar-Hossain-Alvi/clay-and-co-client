@@ -73,7 +73,7 @@ const Home = () => {
             <div className="container mx-auto">
 
                 {/* Slider */}
-                <div>
+                <div className="mt-10">
                     <div className="slider-container">
                         <Slider {...settings}>
                             {
