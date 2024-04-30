@@ -14,17 +14,17 @@ const ArtAndCraftDetail = () => {
             <Navbar></Navbar>
 
             <div className="container mx-auto my-5">
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                     <div className="max-h-[500px]">
                         <img className="h-full w-full" src={photoURL} alt={`photo of ${itemName}`} />
                     </div>
 
                     <div className="flex flex-col justify-center">
                         {/* name. price, rating, description */}
-                        <div className="mb-6">
+                        <div className="mb-6 text-center md:text-left lg:text-left">
                             <h2 className="text-3xl font-bold font-rubic mb-4">{itemName}</h2>
                             <h3 className="font-bold text-lg mb-2">Price: ${price}</h3>
-                            <h3 className="text-lg font-bold mb-4 flex items-center">
+                            <h3 className="text-lg font-bold mb-4 flex items-center justify-center md:justify-start lg:justify-start">
                                 Rating: {rating}
                                 <FaStar className="text-orange-600 ml-1"></FaStar>
                             </h3>
@@ -36,7 +36,7 @@ const ArtAndCraftDetail = () => {
                         </div>
 
                         <div>
-                            <h1 className="text-3xl font-bold">More Info:</h1>
+                            <h1 className="text-3xl font-bold text-center md:text-left lg:text-left">More Info:</h1>
 
                             <div className="overflow-x-auto">
                                 <table className="table">
