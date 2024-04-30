@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Footer from "./Shared/Footer";
 import Navbar from "./Shared/Navbar";
 import { useContext } from "react";
@@ -103,6 +103,12 @@ const Home = () => {
                         {
                             allCraftItems.slice(0, 6).map(singleCraftItem => <CraftItemCard key={singleCraftItem._id} singleCraftItem={singleCraftItem}></CraftItemCard>)
                         }
+                    </div>
+
+                    <div className="text-center mt-6">
+                        <Link to="/allArtsCrafts">
+                            <bt className="btn bg-primaryColor text-white font-rubic hover:bg-rose-800">View All Items</bt>
+                        </Link>
                     </div>
                 </div>
 

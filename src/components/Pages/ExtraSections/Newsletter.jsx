@@ -31,7 +31,7 @@ const Newsletter = () => {
                     <div className="join w-full">
                         <input className="input grow input-bordered join-item" placeholder="Email" type="email" name="email" defaultValue={user?.email === null ? "Enter your email" : user?.email} />
 
-                        <input className="btn join-item rounded-r-full input-bordered bg-primaryColor text-white font-semibold" type="submit" value="Subscribe" />
+                        <input className="btn join-item rounded-r-full input-bordered bg-primaryColor text-white font-semibold hover:bg-rose-800 hover:border-rose-800" type="submit" value="Subscribe" />
                     </div>
                 </form>
             </div>

@@ -20,8 +20,8 @@ const CraftItemCard = ({ singleCraftItem }) => {
                         <p className='text-xl font-semibold mb-2'>${price}</p>
                         <p className='flex items-center gap-1 text-lg font-medium text-secondaryColor mb-2'><FaStar className='text-primaryColor'></FaStar> {rating}</p>
                     </div>
-                    <Link to={`/artAndCraftDetail/${_id}`}>
-                        <button className="btn btn-block bg-primaryColor text-white font-rubic font-bold text-lg">View Details</button>
+                    <Link to={`/craftItemCard/${_id}`}>
+                        <button className="btn btn-block bg-primaryColor text-white font-rubic font-bold text-lg hover:bg-rose-800">View Details</button>
                     </Link>
                 </div>
             </div>
