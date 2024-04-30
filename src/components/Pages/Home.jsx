@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import HomeBannerSlider from "./HomeBannerSlider";
+import Newsletter from "./ExtraSections/Newsletter";
 
 
 
@@ -69,6 +70,8 @@ const Home = () => {
             <Navbar></Navbar>
 
             <div className="container mx-auto">
+
+                {/* Slider */}
                 <div>
                     <div className="slider-container">
                         <Slider {...settings}>
@@ -79,8 +82,9 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="my-20 App">
 
+                {/* Craft Items Section */}
+                <div className="my-20 App">
                     <h3 className="font-bold text-2xl text-center font-rubic mb-8 block">
                         <Typewriter
                             delaySpeed={2000}
@@ -100,6 +104,10 @@ const Home = () => {
                         }
                     </div>
                 </div>
+
+
+                {/* Newsletter section */}
+                <Newsletter></Newsletter>
             </div>
 
             <Footer></Footer>

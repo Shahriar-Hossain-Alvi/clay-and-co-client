@@ -1,6 +1,6 @@
-import { AuthContext } from "../Providers/AuthProvider";
-import Footer from "./Shared/Footer";
-import Navbar from "./Shared/Navbar";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Footer from "../Shared/Footer";
+import Navbar from "../Shared/Navbar";
 import Swal from 'sweetalert2';
 import { useContext } from "react";
 

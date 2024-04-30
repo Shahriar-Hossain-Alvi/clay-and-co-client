@@ -2,12 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layouts/Root";
 import Home from "../Pages/Home";
 import ErrorPage from "../Layouts/ErrorPage";
-import AllArtsCrafts from "../Pages/AllArtsCrafts"
-import AddCrafts from "../Pages/AddCrafts";
+
+import AddCrafts from "../Pages/ArtsAndCrafts/AddCrafts";
 import MyArtsCrafts from "../Pages/MyArtsCrafts";
 import Login from "../Pages/Profile/Login";
 import Register from "../Pages/Profile/Register";
 import PrivateRoute from "./PrivateRoute";
+import AllArtsCrafts from "../Pages/ArtsAndCrafts/AllArtsCrafts";
 
 const router = createBrowserRouter([
     {
