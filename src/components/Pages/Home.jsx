@@ -29,8 +29,6 @@ const Home = () => {
     var settings = {
         dots: true,
         infinite: true,
-        // className: "center",
-        // centerMode: true,
         autoplay: true,
         autoplaySpeed: 5000,
         cssEase: "linear",
@@ -42,7 +40,7 @@ const Home = () => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 3,
                     infinite: true,
                     dots: true
@@ -70,10 +68,10 @@ const Home = () => {
         <div>
             <Navbar></Navbar>
 
-            <div className="container mx-auto">
+            <div className="container mx-auto px-4 lg:px-0">
 
                 {/* Slider */}
-                <div className="mt-10">
+                <div className="mt-10 mx-6 lg:mx-0">
                     <div className="slider-container">
                         <Slider {...settings}>
                             {
@@ -86,7 +84,7 @@ const Home = () => {
 
                 {/* Craft Items Section */}
                 <div className="my-20 App">
-                    <h3 className="font-bold text-2xl text-center font-rubic mb-8">
+                    <h3 className="font-bold text-base md:text-xl lg:text-2xl text-center font-rubic mb-8">
                         <Typewriter
                             delaySpeed={2000}
                             deleteSpeed={100}
@@ -99,7 +97,7 @@ const Home = () => {
 
 
                     {/* Craft Item Cards */}
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
                         {
                             allCraftItems.slice(0, 6).map(singleCraftItem => <CraftItemCard key={singleCraftItem._id} singleCraftItem={singleCraftItem}></CraftItemCard>)
                         }

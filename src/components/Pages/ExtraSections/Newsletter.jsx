@@ -26,7 +26,7 @@ const Newsletter = () => {
             <h1 className="font-bold text-2xl text-center font-rubic mb-1">JOIN OUR NEWSLETTER!</h1>
             <h4 className="font-semibold text-lg">Sign up now for news and special offers!</h4>
 
-            <div className="w-1/2 mx-auto mt-5">
+            <div className="w-full lg:w-1/2 mx-auto mt-5">
                 <form onSubmit={handleNewsLetterForm}>
                     <div className="join w-full">
                         <input className="input grow input-bordered join-item" placeholder="Email" type="email" name="email" defaultValue={user?.email === null ? "Enter your email" : user?.email} />
