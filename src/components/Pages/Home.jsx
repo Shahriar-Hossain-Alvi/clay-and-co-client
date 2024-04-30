@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import HomeBannerSlider from "./HomeBannerSlider";
 import Newsletter from "./ExtraSections/Newsletter";
+import Testimonial from "./ExtraSections/Testimonial";
 
 
 
@@ -85,11 +86,11 @@ const Home = () => {
 
                 {/* Craft Items Section */}
                 <div className="my-20 App">
-                    <h3 className="font-bold text-2xl text-center font-rubic mb-8 block">
+                    <h3 className="font-bold text-2xl text-center font-rubic mb-8">
                         <Typewriter
                             delaySpeed={2000}
                             deleteSpeed={100}
-                            loop={5}
+                            loop={0}
                             typeSpeed={100}
                             words={[
                                 'Discover Our Ceramics and  Pottery items'
@@ -108,6 +109,10 @@ const Home = () => {
 
                 {/* Newsletter section */}
                 <Newsletter></Newsletter>
+
+
+                {/* testimonial section */}
+                <Testimonial></Testimonial>
             </div>
 
             <Footer></Footer>
