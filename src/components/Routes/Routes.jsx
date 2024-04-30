@@ -38,7 +38,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/myArtsCrafts",
-                element: <PrivateRoute><MyArtsCrafts></MyArtsCrafts></PrivateRoute>
+                element: <PrivateRoute><MyArtsCrafts></MyArtsCrafts></PrivateRoute>,
+                loader: ()=> fetch("https://clay-and-co-server.vercel.app/craftItem")
             },
             {
                 path: "/login",
