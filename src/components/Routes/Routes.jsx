@@ -20,17 +20,17 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5000/craftItem")
+                loader: () => fetch("https://clay-and-co-server.vercel.app/craftItem")
             },
             {
                 path: "/allArtsCrafts",
                 element: <AllArtsCrafts></AllArtsCrafts>,
-                loader: () => fetch("http://localhost:5000/craftItem")
+                loader: () => fetch("https://clay-and-co-server.vercel.app/craftItem")
             },
             {
                 path: "/craftItemCard/:id",
                 element: <PrivateRoute><ArtAndCraftDetail></ArtAndCraftDetail></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/craftItem/${params.id}`)
+                loader: ({ params }) => fetch(`https://clay-and-co-server.vercel.app/craftItem/${params.id}`)
             },
             {
                 path: "/addCraft",

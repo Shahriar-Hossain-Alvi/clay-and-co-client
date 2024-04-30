@@ -27,7 +27,7 @@ const AddCrafts = () => {
         console.log(newCraftItem);
 
         //send data to the server
-        fetch('http://localhost:5000/craftItem', {
+        fetch('https://clay-and-co-server.vercel.app/craftItem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
