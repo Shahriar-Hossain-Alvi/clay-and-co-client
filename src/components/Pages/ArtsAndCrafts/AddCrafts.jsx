@@ -60,15 +60,15 @@ const AddCrafts = () => {
                 <div className="mb-6">
                     <h2 className="text-center font-raleway text-2xl font-semibold mb-2">Add a New Craft</h2>
 
-                    <p className="text-center text-lg font-medium">Try Adding your desired Arts and Crafts items using the form below. Its EASY!</p>
+                    <p className="text-center text-lg font-medium px-3 md:px-0 lg:px-0">Try Adding your desired Arts and Crafts items using the form below. Its EASY!</p>
                 </div>
 
 
                 {/* Add Crafts Form */}
-                <div>
+                <div className="px-3 lg:px-0">
                     <form className="space-y-3 shadow-2xl p-6 border rounded-2xl" onSubmit={handleAddCrafts}>
                         {/* name and photo url */}
-                        <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <label className="input input-bordered flex items-center gap-2">
                                 Item Name:
                                 <input name="itemName" type="text" className="grow" placeholder="Craft Item Name" />
@@ -81,7 +81,7 @@ const AddCrafts = () => {
 
 
                         {/* sub category and short description */}
-                        <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <select name="subCategory" className="select select-bordered join-item" defaultValue={'DEFAULT'}>
                                 <option value="DEFAULT" disabled>Sub Category</option>
                                 <option value="Clay-made pottery">Clay-made pottery</option>
@@ -100,7 +100,7 @@ const AddCrafts = () => {
 
 
                         {/* price and rating */}
-                        <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <label className="input input-bordered flex items-center gap-2">
                                 Price:
                                 <input name="price" type="text" className="grow" placeholder="Price of your item" />
@@ -113,14 +113,14 @@ const AddCrafts = () => {
 
 
                         {/* customization and processing time */}
-                        <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <select name="customization" className="select select-bordered join-item" defaultValue={'DEFAULT'}>
                                 <option value="DEFAULT" disabled>customization</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
 
-                            <label className="input input-bordered flex items-center gap-2">
+                            <label className="input input-bordered flex items-center gap-2 h-20 md:h-12 lg:h-12">
                                 Processing Time (Max Days):
                                 <input name="processingTime" type="text" className="grow" placeholder="Item process time" />
                             </label>
@@ -128,7 +128,7 @@ const AddCrafts = () => {
 
 
                         {/* stock status and user email */}
-                        <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <select name="stockStatus" className="select select-bordered join-item" defaultValue={'DEFAULT'}>
                                 <option value="DEFAULT" disabled>Stock Status</option>
                                 <option value="In stock">In stock</option>
@@ -143,7 +143,7 @@ const AddCrafts = () => {
 
 
                         {/* user name and button */}
-                        <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <label className="input input-bordered flex items-center gap-2">
                                 Your Name:
                                 <input name="name" type="text" className="grow" placeholder="Enter your Name" defaultValue={user ? user?.displayName : "Enter your name"} />

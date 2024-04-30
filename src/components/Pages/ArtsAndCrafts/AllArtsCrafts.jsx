@@ -3,9 +3,19 @@ import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import CraftItemCard from "./CraftItemCard";
 import { JackInTheBox } from "react-awesome-reveal";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { useContext } from "react";
 
 const AllArtsCrafts = () => {
     const allCraftItems = useLoaderData();
+
+    const { loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <div className="flex justify-center mt-40">
+            <span className="loading loading-spinner loading-lg"></span>
+        </div>
+    }
 
     return (
         <div>
