@@ -105,7 +105,7 @@ const Home = () => {
 
                     <div className="text-center mt-6">
                         <Link to="/allArtsCrafts">
-                            <bt className="btn bg-primaryColor text-white font-rubic hover:bg-rose-800">View All Items</bt>
+                            <button className="btn bg-primaryColor text-white font-rubic hover:bg-rose-800">View All Items</button>
                         </Link>
                     </div>
                 </div>
