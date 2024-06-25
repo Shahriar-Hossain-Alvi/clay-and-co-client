@@ -10,6 +10,7 @@ import Register from "../Pages/Profile/Register";
 import PrivateRoute from "./PrivateRoute";
 import AllArtsCrafts from "../Pages/ArtsAndCrafts/AllArtsCrafts";
 import ArtAndCraftDetail from "../Pages/ArtsAndCrafts/ArtAndCraftDetail";
+import UpdatePAge from "../Pages/UpdatePAge";
 
 const router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: "/myArtsCrafts",
                 element: <PrivateRoute><MyArtsCrafts></MyArtsCrafts></PrivateRoute>,
-                loader: ()=> fetch("https://clay-and-co-server.vercel.app/craftItem")
+                loader: () => fetch("https://clay-and-co-server.vercel.app/craftItem")
             },
             {
                 path: "/login",
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register>
-            }
+            },
+            {
+                path: "/updatePage",
+                element: <UpdatePAge></UpdatePAge>
+            },
         ]
     },
 ]);

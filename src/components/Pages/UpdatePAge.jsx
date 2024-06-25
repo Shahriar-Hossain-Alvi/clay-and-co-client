@@ -1,14 +1,11 @@
-import { AuthContext } from "../../Providers/AuthProvider";
-import Footer from "../Shared/Footer";
-import Navbar from "../Shared/Navbar";
-import Swal from 'sweetalert2';
-import { useContext } from "react";
+// import Swal from "sweetalert2";
+import Navbar from "./Shared/Navbar";
+import Footer from "./Shared/Footer";
 
-const AddCrafts = () => {
+const UpdatePAge = () => {
 
-    const { user } = useContext(AuthContext);
 
-    const handleAddCrafts = e => {
+    const handleUpdateCrafts = e => {
         e.preventDefault();
         const form = e.target;
         const itemName = form.itemName.value;
@@ -24,33 +21,33 @@ const AddCrafts = () => {
         const name = form.name.value;
 
         const newCraftItem = { itemName, photoURL, subCategory, shortDescription, price, rating, customization, processingTime, stockStatus, email, name }
+        console.log(newCraftItem);
 
         //send data to the server
-        fetch('https://clay-and-co-server.vercel.app/craftItem', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newCraftItem)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+        // fetch('https://clay-and-co-server.vercel.app/craftItem', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newCraftItem)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
 
-                // sweet alert
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success',
-                        text: 'Your item is added to the database successfully',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    })
-                }
-                form.reset();
-            })
+        //         // sweet alert
+        //         if (data.insertedId) {
+        //             Swal.fire({
+        //                 title: 'Success',
+        //                 text: 'Your item is updated to the database successfully',
+        //                 icon: 'success',
+        //                 confirmButtonText: 'OK'
+        //             })
+        //         }
+        //         form.reset();
+        //     })
 
     }
-
     return (
         <div>
             <Navbar></Navbar>
@@ -65,7 +62,7 @@ const AddCrafts = () => {
 
                 {/* Add Crafts Form */}
                 <div className="px-3 lg:px-0">
-                    <form className="space-y-3 shadow-2xl p-6 border rounded-2xl" onSubmit={handleAddCrafts}>
+                    <form className="space-y-3 shadow-2xl p-6 border rounded-2xl" onSubmit={handleUpdateCrafts}>
                         {/* name and photo url */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <label className="input input-bordered flex items-center gap-2">
@@ -126,7 +123,7 @@ const AddCrafts = () => {
                         </div>
 
 
-                        {/* stock status and user email */}
+                        {/* stock status and button */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
                             <select name="stockStatus" className="select select-bordered join-item" defaultValue={'DEFAULT'}>
                                 <option value="DEFAULT" disabled>Stock Status</option>
@@ -134,21 +131,7 @@ const AddCrafts = () => {
                                 <option value="Made to Order">Made to Order</option>
                             </select>
 
-                            <label className="input input-bordered flex items-center gap-2">
-                                Your Email:
-                                <input name="email" type="text" className="grow" placeholder="Enter your email" defaultValue={user?.email == null ? "Enter your email correctly" : user.email} />
-                            </label>
-                        </div>
-
-
-                        {/* user name and button */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 lg:gap-8">
-                            <label className="input input-bordered flex items-center gap-2">
-                                Your Name:
-                                <input name="name" type="text" className="grow" placeholder="Enter your Name" defaultValue={user ? user?.displayName : "Enter your name"} />
-                            </label>
-
-                            <input className="btn bg-primaryColor hover:bg-lime-700 text-white w-full" type="submit" value="Add" />
+                            <input className="btn bg-primaryColor hover:bg-lime-700 text-white w-full" type="submit" value="Update" />
                         </div>
                     </form>
                 </div>
@@ -160,4 +143,4 @@ const AddCrafts = () => {
     );
 };
 
-export default AddCrafts;
+export default UpdatePAge;

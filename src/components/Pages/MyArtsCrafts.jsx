@@ -23,7 +23,7 @@ const MyArtsCrafts = () => {
 
             <div className="container mx-auto my-10">
                 <h2 className="text-2xl font-bold font-rubic text-center">This is the list of items that is added by : {loggedInUserName}</h2>
-                <h3 className="text-xl font-semibold font-rubic text-center">Email Address: {loggedInUserEmail}</h3>
+                <h3 className="text-xl font-semibold font-rubic text-center mb-4">Email Address: {loggedInUserEmail}</h3>
 
 
                 {/* my added items */}
