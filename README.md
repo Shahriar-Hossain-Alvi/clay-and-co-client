@@ -4,6 +4,8 @@
 - Live link 2: https://clay-and-co.firebaseapp.com
 - Server side repository: https://github.com/Shahriar-Hossain-Alvi/clay-and-co-server
 
+# About
+Clay and Co. is a simple demo online pottery selling website built using Html, Css, Tailwind css, React in the frontend, firebase for authentication and mongodb, express js for backend.
 
 ## Features
 - **Sorting**: Sort items by type using select method from All art & craft page
